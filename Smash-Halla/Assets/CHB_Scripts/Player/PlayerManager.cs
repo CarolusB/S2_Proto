@@ -45,7 +45,7 @@ namespace Player
 		IEnumerator HitStunRecovery()
         {
 			hitStunFrameCount = 0;
-			while(hitStunFrameCount < 18 + (int)(damage * 0.65f))
+			while(hitStunFrameCount < 15 + (int)(damage * 0.41f))
             {
 				yield return new WaitForFixedUpdate();
 				hitStunFrameCount++;
