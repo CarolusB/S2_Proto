@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Player
 {
+	//[RequireComponent(typeof(Rigidbody2D))]
 	public class PlayerManager : MonoBehaviour
 	{
 		#region Variables

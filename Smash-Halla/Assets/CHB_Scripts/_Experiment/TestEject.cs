@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 namespace Experiment
 {
@@ -11,6 +12,8 @@ namespace Experiment
 		public Transform projectPoint;
 		Vector2 eject;
 		public float ejectMultiply = 1f;
+
+		public PlayableDirector attack;
         #endregion
 
         private void Start()
@@ -26,6 +29,11 @@ namespace Experiment
 				eject = projectPoint.position - transform.position;
 				dummyRb.AddForce(eject * ejectMultiply, ForceMode2D.Impulse);
 				ejectMultiply += 6.35f;
+            }
+
+			if (Input.GetKeyDown(KeyCode.M))
+            {
+				attack.Play();
             }
 		}
 	}
