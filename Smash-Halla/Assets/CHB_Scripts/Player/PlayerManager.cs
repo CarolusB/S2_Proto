@@ -27,8 +27,9 @@ namespace Player
 			
 		}
 
-		public void Eject(Vector2 _vector)
+		public void Eject(Vector2 _vector, float damageInput)
         {
+			damage += damageInput;
 			playerRb.AddForce(_vector * damage, ForceMode2D.Impulse);
 			
 			SetHitStun();
