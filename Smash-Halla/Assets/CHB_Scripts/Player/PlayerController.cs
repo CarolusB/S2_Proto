@@ -8,7 +8,7 @@ namespace Player
 	public class PlayerController : MonoBehaviour
 	{
 		#region Variables
-		PlayerManager manager;
+		//PlayerManager manager;
 		public bool hitStun = false;
 		public bool inAir = false;
 
