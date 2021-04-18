@@ -9,14 +9,17 @@ namespace Player
 	{
 		#region Variables
 		public PlayerController playerController;
-		[SerializeField] Rigidbody2D playerRb;
 		public float damage;
 
 		Coroutine currentHitStun;
-		#endregion
+        #endregion
 
-		// Start is called before the first frame update
-		void Start()
+        private void Awake()
+        {
+            
+        }
+        // Start is called before the first frame update
+        void Start()
 		{
 			damage = 0;
 		}
@@ -30,7 +33,7 @@ namespace Player
 		public void Eject(Vector2 _vector, float damageInput)
         {
 			damage += damageInput;
-			playerRb.AddForce(_vector * damage, ForceMode2D.Impulse);
+			playerController.playerRb.AddForce(_vector * damage, ForceMode2D.Impulse);
 			
 			SetHitStun();
         }
