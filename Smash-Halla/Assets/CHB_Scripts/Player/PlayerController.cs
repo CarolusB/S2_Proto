@@ -84,7 +84,7 @@ namespace Player
 
 		void JumpInput()
         {
-			if (jumpAction && !inHopDecision && !onJumpDelay)
+			if (jumpAction && !inHopDecision && !onJumpDelay && !longHopIntention)
             {
 				StartCoroutine(JumpAgainDelay());
 				if (inAir)
