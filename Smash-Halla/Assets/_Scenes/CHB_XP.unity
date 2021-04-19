@@ -1695,7 +1695,7 @@ MonoBehaviour:
   playerRb: {fileID: 2120059684}
   extraJumps: 1
   speed: 2.23
-  jumpForce: 3
+  jumpForce: 40
 --- !u!114 &2120059686
 MonoBehaviour:
   m_ObjectHideFlags: 0
