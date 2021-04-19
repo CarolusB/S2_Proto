@@ -11,6 +11,7 @@ namespace Player
 		//PlayerManager manager;
 		public bool hitStun = false;
 		public bool inAir = false;
+		bool facingLeft = false;
 
 		public Rigidbody2D playerRb;
 		public int extraJumps = 1;
@@ -39,18 +40,26 @@ namespace Player
 
         private void MovementInput()
         {
-			horizontalInput = Input.GetAxis("Left_Joystick_X");
+			horizontalInput = Input.GetAxis("Horizontal");
 
 			if (horizontalInput < -0.15 || horizontalInput > 0.15)
 			{
 				vectorInput = new Vector2(horizontalInput, 0);
+
+                if (!inAir)
+                {
+					if (horizontalInput > 0)
+						facingLeft = false;
+					else
+						facingLeft = true;
+                }
 			}
 			else
 			{
 				vectorInput = Vector2.zero;
 			}
 
-			playerRb.velocity = vectorInput * speed;
+			playerRb.velocity = vectorInput.normalized * speed;
 		}
 
 		void JumpInput()
