@@ -11,15 +11,16 @@ namespace Player
 		public bool hitStun = false;
 		public bool inAir = false;
 		bool jumpAction = false;
+		bool longHopIntention = false;
 		bool facingLeft = false;
 
 		public Rigidbody2D playerRb;
 		public int extraJumps = 1;
-		int extraJumpsReserve;
+		[SerializeField]int extraJumpsReserve;
 
-		float horizontalInput;
+		//float horizontalInput;
 		Vector2 vectorInput = Vector2.zero;
-		float vectorInputMag;
+		//float vectorInputMag;
 		public float speed;
 		public float jumpForce;
 		#endregion
@@ -41,6 +42,12 @@ namespace Player
         {
 			jumpAction = context.action.triggered;
         }
+
+		public void KeepJumpPressed(InputAction.CallbackContext context)
+        {
+			longHopIntention = context.action.triggered;
+        }
+
 		// Update is called once per frame
 		void Update()
 		{
@@ -49,19 +56,19 @@ namespace Player
 			MovementInput();
 			JumpInput();
 		}
-		float vecHorizontal;
+		//float vecHorizontal;
 		Vector2 vectorValue;
         private void MovementInput()
         {
-			vecHorizontal = vectorInput.x;
+			//vecHorizontal = vectorInput.x;
 
-			if (vecHorizontal > 0.15 || vecHorizontal < -0.15)
+			if (vectorInput.x > 0.15 || vectorInput.x < -0.15)
 			{
-				vectorValue = new Vector2(vecHorizontal, 0);
+				vectorValue = new Vector2(vectorInput.x, 0).normalized;
 
 				if (!inAir)
                 {
-					if (horizontalInput > 0)
+					if (vectorInput.x > 0)
 						facingLeft = false;
 					else
 						facingLeft = true;
@@ -69,51 +76,72 @@ namespace Player
 			}
 			else
 			{
-				vectorValue = Vector2.zero;
+				vectorValue.x = 0f;
 			}
 
-			playerRb.velocity = vectorValue.normalized * speed;
+			playerRb.velocity = new Vector2(vectorValue.x * speed, playerRb.velocity.y);
 		}
 
 		void JumpInput()
         {
-			if (jumpAction)
+			if (jumpAction && !inHopDecision && !onJumpDelay)
             {
-                if (inAir)
+				StartCoroutine(JumpAgainDelay());
+				if (inAir)
                 {
 					if(extraJumpsReserve > 0)
                     {
+						playerRb.velocity = new Vector2(playerRb.velocity.x, 0f);
 						playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 						extraJumpsReserve--;
 					}
                 }
                 else
                 {
-					inAir = true;
+					inHopDecision = true;
 					StartCoroutine(CheckShortHop());
 				}
             }
         }
 
-		int frameCount;
+		bool inHopDecision;
+		int checkHopframeCount;
 		IEnumerator CheckShortHop()
         {
-			frameCount = 0;
-
-			while(frameCount < 3)
+			checkHopframeCount = 0;
+			
+			while(checkHopframeCount < 3)
             {
-				yield return new WaitForFixedUpdate();
-				frameCount++;
-
-                if (jumpAction)
-                {
-					playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-				}
-                else
-                {
-					playerRb.AddForce(Vector2.up * jumpForce * 0.52f, ForceMode2D.Impulse);
-				}
+				yield return new WaitForSeconds(0.015f);
+				checkHopframeCount++;
             }
+
+			if (longHopIntention)
+			{
+				playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+			}
+			else
+			{
+				playerRb.AddForce(Vector2.up * jumpForce * 0.58f, ForceMode2D.Impulse);
+			}
+
+			inAir = true;
+			inHopDecision = false;
+		}
+
+		bool onJumpDelay;
+		public IEnumerator JumpAgainDelay()
+        {
+			onJumpDelay = true;
+
+			yield return new WaitForSeconds(0.030f);
+
+			onJumpDelay = false;
+        }
+
+		public void ResetJumps()
+        {
+			extraJumpsReserve = extraJumps;
         }
     }
 }

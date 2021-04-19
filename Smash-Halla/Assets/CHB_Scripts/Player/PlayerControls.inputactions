@@ -20,6 +20,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "LongHop",
+                    "type": "Button",
+                    "id": "b4abd5c1-7354-4fa4-8cae-96abc7f47730",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold(duration=0.03)"
                 }
             ],
             "bindings": [
@@ -35,59 +43,26 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "2D Vector",
-                    "id": "8ff68f3a-af60-4fdb-abad-349dab173315",
-                    "path": "2DVector",
+                    "name": "",
+                    "id": "7e7b2291-fed4-4b18-8f8f-b6ef2f5550ba",
+                    "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "Movement",
-                    "isComposite": true,
+                    "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
-                    "id": "96dea671-23c9-4914-b227-b0c510acb859",
-                    "path": "<Gamepad>/leftStick/y",
+                    "name": "",
+                    "id": "1c7004da-6c82-4e4e-b05d-ba11028e5321",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Movement",
+                    "action": "LongHop",
                     "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "a67e4783-c8a4-42c0-b9b0-e094399e49bb",
-                    "path": "<Gamepad>/leftStick/y",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "567737fe-23fd-4791-bc8f-dbff7d807ce5",
-                    "path": "<Gamepad>/leftStick/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "ea35a71b-2294-4b00-acc2-335d96542c2e",
-                    "path": "<Gamepad>/leftStick/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 }
             ]
         }
