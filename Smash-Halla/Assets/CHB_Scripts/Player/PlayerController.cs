@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Player
 {
@@ -11,6 +10,7 @@ namespace Player
 		//PlayerManager manager;
 		public bool hitStun = false;
 		public bool inAir = false;
+		bool jumpAction = false;
 		bool facingLeft = false;
 
 		public Rigidbody2D playerRb;
@@ -19,6 +19,7 @@ namespace Player
 
 		float horizontalInput;
 		Vector2 vectorInput = Vector2.zero;
+		float vectorInputMag;
 		public float speed;
 		public float jumpForce;
 		#endregion
@@ -29,6 +30,17 @@ namespace Player
 			extraJumpsReserve = extraJumps;
 		}
 
+		public void OnMove(InputAction.CallbackContext context)
+        {
+			vectorInput = context.ReadValue<Vector2>();
+			//horizontalInput = context.ReadValue<float>();
+			//vectorInputMag = vectorInput.magnitude;
+        }
+
+		public void OnJump(InputAction.CallbackContext context)
+        {
+			jumpAction = context.action.triggered;
+        }
 		// Update is called once per frame
 		void Update()
 		{
@@ -37,16 +49,17 @@ namespace Player
 			MovementInput();
 			JumpInput();
 		}
-
+		float vecHorizontal;
+		Vector2 vectorValue;
         private void MovementInput()
         {
-			horizontalInput = Input.GetAxis("Horizontal");
+			vecHorizontal = vectorInput.x;
 
-			if (horizontalInput < -0.15 || horizontalInput > 0.15)
+			if (vecHorizontal > 0.15 || vecHorizontal < -0.15)
 			{
-				vectorInput = new Vector2(horizontalInput, 0);
+				vectorValue = new Vector2(vecHorizontal, 0);
 
-                if (!inAir)
+				if (!inAir)
                 {
 					if (horizontalInput > 0)
 						facingLeft = false;
@@ -56,21 +69,22 @@ namespace Player
 			}
 			else
 			{
-				vectorInput = Vector2.zero;
+				vectorValue = Vector2.zero;
 			}
 
-			playerRb.velocity = vectorInput.normalized * speed;
+			playerRb.velocity = vectorValue.normalized * speed;
 		}
 
 		void JumpInput()
         {
-			if (Input.GetButtonDown("Jump"))
+			if (jumpAction)
             {
                 if (inAir)
                 {
 					if(extraJumpsReserve > 0)
                     {
 						playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+						extraJumpsReserve--;
 					}
                 }
                 else
@@ -91,7 +105,7 @@ namespace Player
 				yield return new WaitForFixedUpdate();
 				frameCount++;
 
-                if (Input.GetButton("Jump"))
+                if (jumpAction)
                 {
 					playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 				}
