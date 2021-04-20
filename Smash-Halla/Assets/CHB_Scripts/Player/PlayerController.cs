@@ -32,8 +32,6 @@ namespace Player
 		public float jumpForce;
 
 		[Header("Attacks")]
-		[SerializeField] GameObject attacksGroup;
-		//Transform attacksParent;
 		[SerializeField] AttackBehavior neutralAttack;
 		[SerializeField] AttackBehavior forwardAttack;
 		[SerializeField] AttackBehavior upAttack;
@@ -50,15 +48,10 @@ namespace Player
 		void Start()
 		{
 			extraJumpsReserve = extraJumps;
+        }
 
-    //        for (int i = 0; i < attacksGroup.transform.childCount; i++)
-    //        {
-				//attacksGroup.transform.GetChild(i).gameObject.SetActive(false);
-    //        }
-		}
-
-        #region Input Events
-        public void OnMove(InputAction.CallbackContext context)
+		#region Input Events
+		public void OnMove(InputAction.CallbackContext context)
         {
 			vectorInput = context.ReadValue<Vector2>();
 			//horizontalInput = context.ReadValue<float>();
