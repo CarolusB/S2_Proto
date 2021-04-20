@@ -5,32 +5,23 @@ using UnityEngine;
 namespace Player
 {
 	//[RequireComponent(typeof(Rigidbody2D))]
-	public class PlayerManager : MonoBehaviour
+	public class PlayerManager : CharacterManager
 	{
 		#region Variables
 		public PlayerController playerController;
-		public float damage;
-
 		Coroutine currentHitStun;
         #endregion
 
         // Start is called before the first frame update
-        void Start()
+        protected override void Start()
 		{
-			damage = 0;
+			base.Start();
+			characterRb = playerController.playerRb;
 		}
 
-		// Update is called once per frame
-		void Update()
-		{
-			
-		}
-
-		public void Eject(Vector2 _vector, float damageInput)
+		public override void Eject(Vector2 _vector, float damageInput)
         {
-			damage += damageInput;
-			playerController.playerRb.AddForce(_vector * damage, ForceMode2D.Impulse);
-			
+			base.Eject(_vector, damageInput);
 			SetHitStun();
         }
 
