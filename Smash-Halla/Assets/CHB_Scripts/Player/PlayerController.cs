@@ -11,8 +11,13 @@ namespace Player
 		//PlayerManager manager;
 		public bool hitStun = false;
 		public bool inAir = false;
+		public bool canAttack = true;
+		
 		bool jumpAction = false;
 		bool longHopIntention = false;
+		bool attackInput = false;
+		bool chargedInput = false;
+		
 		bool facingRight = false;
 
 		public Rigidbody2D playerRb;
@@ -25,15 +30,35 @@ namespace Player
 		//float vectorInputMag;
 		public float speed;
 		public float jumpForce;
+
+		[Header("Attacks")]
+		[SerializeField] GameObject attacksGroup;
+		//Transform attacksParent;
+		[SerializeField] AttackBehavior neutralAttack;
+		[SerializeField] AttackBehavior forwardAttack;
+		[SerializeField] AttackBehavior upAttack;
+		[SerializeField] AttackBehavior neutralAir;
+		[SerializeField] AttackBehavior forwardAir;
+		[SerializeField] AttackBehavior backAir;
+		[SerializeField] AttackBehavior upAir;
+		[SerializeField] AttackBehavior downAir;
+		[SerializeField] AttackBehavior forwardCharged;
+		[SerializeField] AttackBehavior upCharged;
 		#endregion
 
 		// Start is called before the first frame update
 		void Start()
 		{
 			extraJumpsReserve = extraJumps;
+
+    //        for (int i = 0; i < attacksGroup.transform.childCount; i++)
+    //        {
+				//attacksGroup.transform.GetChild(i).gameObject.SetActive(false);
+    //        }
 		}
 
-		public void OnMove(InputAction.CallbackContext context)
+        #region Input Events
+        public void OnMove(InputAction.CallbackContext context)
         {
 			vectorInput = context.ReadValue<Vector2>();
 			//horizontalInput = context.ReadValue<float>();
@@ -49,6 +74,17 @@ namespace Player
         {
 			longHopIntention = context.action.triggered;
         }
+
+		public void OnAttack(InputAction.CallbackContext context)
+        {
+			attackInput = context.action.triggered;
+		}
+
+		public void OnCharged(InputAction.CallbackContext context)
+        {
+			chargedInput = context.action.triggered;
+		}
+		#endregion
 
 		// Update is called once per frame
 		void Update()
@@ -141,6 +177,11 @@ namespace Player
 					StartCoroutine(CheckShortHop());
 				}
             }
+        }
+
+		void AttackCommand()
+        {
+
         }
 
 		bool inHopDecision;
