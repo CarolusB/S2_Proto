@@ -39,7 +39,7 @@ namespace Player
 			hitStunFrameCount = 0;
 			while(hitStunFrameCount < 15 + (int)(damage * 0.41f))
             {
-				yield return new WaitForSeconds(0.015f);
+				yield return new WaitForFixedUpdate();
 				hitStunFrameCount++;
             }
 			//yield return new WaitForSeconds(0.3f + damage * 0.0065f);

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,20 +8,22 @@ namespace Player
 	public class HurtboxBehavior : MonoBehaviour
 	{
 		#region Variables
-		
-		#endregion
+		[SerializeField] private LayerMask hitboxLayer;
+        [SerializeField] private CharacterManager charManager;
+        #endregion
 
-		// Start is called before the first frame update
-		void Start()
-		{
-			
-		}
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if(collision.gameObject.CompareTag("HitBox")/*.layer == hitboxLayer*/)
+            {
+                MakeEject(collision.gameObject.GetComponent<HitboxValue>());
+            }
+        }
 
-		// Update is called once per frame
-		void Update()
-		{
-			
-		}
-	}
+        private void MakeEject(HitboxValue hitbox)
+        {
+            charManager.Eject(hitbox.eject, hitbox.damageInput);
+        }
+    }
 }
 

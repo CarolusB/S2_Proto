@@ -130,11 +130,18 @@ namespace Player
 		}
 
 		bool onJumpDelay;
+		int jumpDelayFramecount;
 		public IEnumerator JumpAgainDelay()
         {
 			onJumpDelay = true;
+			jumpDelayFramecount = 0;
 
-			yield return new WaitForSeconds(0.030f);
+			while(jumpDelayFramecount < 2)
+            {
+				yield return new WaitForFixedUpdate();
+				jumpDelayFramecount++;
+			}
+			
 
 			onJumpDelay = false;
         }
