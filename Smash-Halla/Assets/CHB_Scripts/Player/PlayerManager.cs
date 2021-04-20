@@ -22,6 +22,7 @@ namespace Player
 		public override void Eject(Vector2 _vector, float damageInput)
         {
 			base.Eject(_vector, damageInput);
+			playerController.currentAttack.Stop();
 			SetHitStun();
         }
 

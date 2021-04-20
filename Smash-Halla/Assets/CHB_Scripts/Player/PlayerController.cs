@@ -42,6 +42,8 @@ namespace Player
 		[SerializeField] AttackBehavior downAir;
 		[SerializeField] AttackBehavior forwardCharged;
 		[SerializeField] AttackBehavior upCharged;
+
+		public AttackBehavior currentAttack;
 		#endregion
 
 		// Start is called before the first frame update

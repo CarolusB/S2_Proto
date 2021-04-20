@@ -24,6 +24,11 @@ namespace Player
 		{
 			
 		}
+
+		public void Stop()
+        {
+			//Cancel when hit by opponent attack
+        }
 	}
 }
 
