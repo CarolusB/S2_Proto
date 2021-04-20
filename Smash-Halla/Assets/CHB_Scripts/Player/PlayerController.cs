@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 namespace Player
 {
-	public enum StickDirection { Up, Down, Left, Right}
+	public enum StickDirection { Up, Down, Left, Right, Neutral}
 	public class PlayerController : MonoBehaviour
 	{
 		#region Variables
@@ -13,7 +13,7 @@ namespace Player
 		public bool inAir = false;
 		bool jumpAction = false;
 		bool longHopIntention = false;
-		bool facingLeft = false;
+		bool facingRight = false;
 
 		public Rigidbody2D playerRb;
 		public int extraJumps = 1;
@@ -64,12 +64,12 @@ namespace Player
 		
 		void GetDirectionFromStick()
         {
-            if(vectorInput.magnitude > 0.15)
-            {
+			if (vectorInput.magnitude > 0.15)
+			{
 				if (Mathf.Abs(vectorInput.y) > Mathf.Abs(vectorInput.x))
-                {
-                    switch (vectorInput.y)
-                    {
+				{
+					switch (vectorInput.y)
+					{
 						case float value when (value > 0):
 							stickDirection = StickDirection.Up;
 							break;
@@ -78,8 +78,8 @@ namespace Player
 							break;
 					}
 				}
-                else
-                {
+				else
+				{
 					switch (vectorInput.x)
 					{
 						case float value when (value > 0):
@@ -90,9 +90,10 @@ namespace Player
 							break;
 					}
 				}
-            }
+			}
+			else stickDirection = StickDirection.Neutral;
 
-			Debug.Log(vectorInput.x + " | " + vectorInput.y + " | " + stickDirection);
+			//Debug.Log(vectorInput.x + " | " + vectorInput.y + " | " + stickDirection);
         }
 
 		Vector2 vectorValue;
@@ -107,9 +108,9 @@ namespace Player
 				if (!inAir)
                 {
 					if (vectorInput.x > 0)
-						facingLeft = false;
+						facingRight = true;
 					else
-						facingLeft = true;
+						facingRight = false;
                 }
 			}
 			else
