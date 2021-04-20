@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 namespace Player
 {
+	public enum StickDirection { Up, Down, Left, Right}
 	public class PlayerController : MonoBehaviour
 	{
 		#region Variables
@@ -20,6 +21,7 @@ namespace Player
 
 		//float horizontalInput;
 		Vector2 vectorInput = Vector2.zero;
+		StickDirection stickDirection = StickDirection.Right;
 		//float vectorInputMag;
 		public float speed;
 		public float jumpForce;
@@ -51,12 +53,48 @@ namespace Player
 		// Update is called once per frame
 		void Update()
 		{
+			GetDirectionFromStick();
+
 			if (hitStun)
 				return;
+			
 			MovementInput();
 			JumpInput();
 		}
-		//float vecHorizontal;
+		
+		void GetDirectionFromStick()
+        {
+            if(vectorInput.magnitude > 0.15)
+            {
+				if (Mathf.Abs(vectorInput.y) > Mathf.Abs(vectorInput.x))
+                {
+                    switch (vectorInput.y)
+                    {
+						case float value when (value > 0):
+							stickDirection = StickDirection.Up;
+							break;
+						default:
+							stickDirection = StickDirection.Down;
+							break;
+					}
+				}
+                else
+                {
+					switch (vectorInput.x)
+					{
+						case float value when (value > 0):
+							stickDirection = StickDirection.Right;
+							break;
+						default:
+							stickDirection = StickDirection.Left;
+							break;
+					}
+				}
+            }
+
+			Debug.Log(vectorInput.x + " | " + vectorInput.y + " | " + stickDirection);
+        }
+
 		Vector2 vectorValue;
         private void MovementInput()
         {
