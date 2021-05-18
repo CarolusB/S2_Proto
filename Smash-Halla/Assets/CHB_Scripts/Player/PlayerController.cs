@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -33,7 +34,6 @@ namespace Player
 
 		[Header("Attacks")]
 		[SerializeField] AttackBehavior neutralAttack;
-		[SerializeField] AttackBehavior forwardAttack;
 		[SerializeField] AttackBehavior upAttack;
 		[SerializeField] AttackBehavior neutralAir;
 		[SerializeField] AttackBehavior forwardAir;
@@ -50,14 +50,13 @@ namespace Player
 		void Start()
 		{
 			extraJumpsReserve = extraJumps;
+			currentAttack = null;
         }
 
 		#region Input Events
 		public void OnMove(InputAction.CallbackContext context)
         {
 			vectorInput = context.ReadValue<Vector2>();
-			//horizontalInput = context.ReadValue<float>();
-			//vectorInputMag = vectorInput.magnitude;
         }
 
 		public void OnJump(InputAction.CallbackContext context)
@@ -86,14 +85,17 @@ namespace Player
 		{
 			GetDirectionFromStick();
 
-			if (hitStun)
-				return;
-			
-			MovementInput();
-			JumpInput();
+			if (!hitStun)
+            {
+				MovementInput();
+				JumpInput();
+				AttackCommand();
+			}
+
+			CheckAttackEnding();
 		}
-		
-		void GetDirectionFromStick()
+
+        void GetDirectionFromStick()
         {
 			if (vectorInput.magnitude > 0.15)
 			{
@@ -152,6 +154,7 @@ namespace Player
 			playerRb.velocity = new Vector2(vectorValue.x * speed, playerRb.velocity.y);
 		}
 
+		#region Jump Methods
 		void JumpInput()
         {
 			if (jumpAction && !inHopDecision && !onJumpDelay && !longHopIntention)
@@ -174,22 +177,17 @@ namespace Player
             }
         }
 
-		void AttackCommand()
-        {
-
-        }
-
 		bool inHopDecision;
 		int checkHopframeCount;
 		IEnumerator CheckShortHop()
-        {
+		{
 			checkHopframeCount = 0;
-			
-			while(checkHopframeCount < 3)
-            {
+
+			while (checkHopframeCount < 3)
+			{
 				yield return new WaitForSeconds(0.015f);
 				checkHopframeCount++;
-            }
+			}
 
 			if (longHopIntention)
 			{
@@ -207,24 +205,99 @@ namespace Player
 		bool onJumpDelay;
 		int jumpDelayFramecount;
 		public IEnumerator JumpAgainDelay()
-        {
+		{
 			onJumpDelay = true;
 			jumpDelayFramecount = 0;
 
-			while(jumpDelayFramecount < 2)
-            {
+			while (jumpDelayFramecount < 2)
+			{
 				yield return new WaitForFixedUpdate();
 				jumpDelayFramecount++;
 			}
-			
+
 
 			onJumpDelay = false;
-        }
+		}
 
 		public void ResetJumps()
-        {
+		{
 			extraJumpsReserve = extraJumps;
+		}
+        #endregion
+
+        #region Attack Methods
+        void AttackCommand()
+        {
+			if (currentAttack != null)
+				return;
+			
+			if (attackInput)
+            {
+                if (!inAir)
+                {
+					if(stickDirection == StickDirection.Up)
+                    {
+						currentAttack = upAttack.StartAttack(facingRight);
+                    }
+                    else
+                    {
+						currentAttack = neutralAttack.StartAttack(facingRight);
+					}
+                }
+                else
+                {
+                    switch (stickDirection)
+                    {
+						case StickDirection.Neutral:
+							currentAttack = neutralAir.StartAttack(facingRight);
+							break;
+
+						case StickDirection.Right:
+                            if (facingRight)
+                            {
+								currentAttack = forwardAir.StartAttack(facingRight);
+							}
+                            else
+                            {
+								currentAttack = backAir.StartAttack(facingRight);
+							}
+							break;
+
+						case StickDirection.Left:
+                            if (!facingRight)
+                            {
+								currentAttack = forwardAir.StartAttack(facingRight);
+							}
+                            else
+                            {
+								currentAttack = backAir.StartAttack(facingRight);
+							}
+							break;
+
+						case StickDirection.Up:
+							currentAttack = upAir.StartAttack(facingRight);
+							break;
+
+						case StickDirection.Down:
+							currentAttack = downAir.StartAttack(facingRight);
+							break;
+                    }
+                }
+            }
+			else if (chargedInput && !inAir)
+            {
+
+            }
         }
+
+		private void CheckAttackEnding()
+		{
+            if (currentAttack != null && !currentAttack.Ongoing)
+            {
+				currentAttack = null;
+            }
+		}
+        #endregion
     }
 }
 

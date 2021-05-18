@@ -18,6 +18,12 @@ namespace Stage
                 PlayerController playerCaught = collision.gameObject.GetComponent<PlayerController>();
                 playerCaught.inAir = false;
                 playerCaught.ResetJumps();
+
+                if(playerCaught.currentAttack != null)
+                {
+                    playerCaught.currentAttack.Stop();
+                }
+
                 StartCoroutine(playerCaught.JumpAgainDelay());
             }
         }
