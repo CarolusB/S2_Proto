@@ -19,6 +19,7 @@ namespace Player
 		bool longHopIntention = false;
 		bool attackInput = false;
 		bool chargedInput = false;
+		public bool IsCharging { get { return chargedInput; } }
 		
 		bool facingRight = false;
 
@@ -93,7 +94,7 @@ namespace Player
 		{
 			GetDirectionFromStick();
 
-			if (!hitStun)
+			if (!hitStun)/*&& !cantAct*/
             {
 				MovementInput();
 				JumpInput();
@@ -165,7 +166,7 @@ namespace Player
 		#region Jump Methods
 		void JumpInput()
         {
-			if (jumpAction && !inHopDecision && !onJumpDelay && !longHopIntention)
+			if (jumpAction && !inHopDecision && !onJumpDelay && !longHopIntention && !chargedInput)
             {
 				StartCoroutine(JumpAgainDelay());
 				if (inAir)
@@ -294,7 +295,14 @@ namespace Player
             }
 			else if (chargedInput && !inAir)
             {
-
+                if(stickDirection == StickDirection.Up)
+                {
+					currentAttack = upCharged.StartAttack(facingRight);
+				}
+                else
+                {
+					currentAttack = forwardCharged.StartAttack(facingRight);
+				}
             }
         }
 
@@ -305,6 +313,16 @@ namespace Player
 				currentAttack = null;
             }
 		}
+
+		IEnumerator ChargingAttack()
+        {
+			//framecount aug and launch on run out or release
+			foreach(HitboxInfo hitbox in currentAttack.hitboxes)
+            {
+				hitbox.values.damageInput += 3; //koneri mais oki
+            }
+			yield return null;
+        }
         #endregion
     }
 }

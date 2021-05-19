@@ -14,7 +14,7 @@ namespace Player
 		[SerializeField] PlayableAsset rightVersion;
 		[SerializeField] PlayableAsset leftVersion;
 
-		[SerializeField] HitboxInfo[] hitboxes;
+		public HitboxInfo[] hitboxes;
 		[SerializeField] HitboxValue[] setValues;
 		bool isOngoing;
 		public bool Ongoing
@@ -56,11 +56,12 @@ namespace Player
 				//facing left version
 			}
 
+			Ongoing = true;
 			StartCoroutine(ProceedAttack());
 			return this;
 		}
 
-        private IEnumerator ProceedAttack()
+        protected virtual IEnumerator ProceedAttack()
         {
             throw new NotImplementedException();
         }
@@ -68,6 +69,8 @@ namespace Player
         public void Stop()
         {
 			//Cancel when hit by opponent attack
+			attackPlayer.Stop();
+			Ongoing = false;
         }
 	}
 }
