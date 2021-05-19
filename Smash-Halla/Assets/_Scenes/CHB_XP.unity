@@ -1330,9 +1330,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7838d43b56ff1148b606f13a3a07711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eject: {x: 1.2, y: 1.52}
-  damageInput: 22
-  localPriority: 255
+  values:
+    eject: {x: 0, y: 0}
+    damageInput: 0
+    localPriority: 0
 --- !u!58 &1934649609
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1415,6 +1416,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6398852953529869469, guid: e3f2eb999ff8ff84fb56739bb9309a6d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6398852953529869469, guid: e3f2eb999ff8ff84fb56739bb9309a6d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6398852953529869469, guid: e3f2eb999ff8ff84fb56739bb9309a6d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6398852953529869469, guid: e3f2eb999ff8ff84fb56739bb9309a6d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6398852953529869469, guid: e3f2eb999ff8ff84fb56739bb9309a6d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3f2eb999ff8ff84fb56739bb9309a6d, type: 3}
