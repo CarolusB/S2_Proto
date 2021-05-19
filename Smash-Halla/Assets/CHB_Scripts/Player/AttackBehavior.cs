@@ -2,13 +2,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 namespace Player
 {
 	public class AttackBehavior : MonoBehaviour
 	{
 		#region Variables
-		[SerializeField] List<GameObject> attackParts;
+		[SerializeField] PlayableDirector attackPlayer;
+
+		[SerializeField] PlayableAsset rightVersion;
+		[SerializeField] PlayableAsset leftVersion;
+
+		[SerializeField] HitboxInfo[] hitboxes;
+		[SerializeField] HitboxValue[] setValues;
 		bool isOngoing;
 		public bool Ongoing
         {
@@ -20,11 +27,6 @@ namespace Player
 		// Start is called before the first frame update
 		void Start()
 		{
-			foreach(GameObject attackPart in attackParts)
-            {
-				attackPart.SetActive(false);
-            }
-
 			Ongoing = false;
 		}
 
@@ -36,12 +38,21 @@ namespace Player
 		
 		public AttackBehavior StartAttack(bool _facingRight)
         {
-            if (_facingRight)
+            for (int i = 0; i < hitboxes.Length; i++)
+            {
+				hitboxes[i].values = setValues[i];
+            }
+
+			if (_facingRight)
             {
 				//facing right version
             }
             else
             {
+				foreach(HitboxInfo hitbox in hitboxes)
+                {
+					hitbox.values.eject = new Vector2(-hitbox.values.eject.x, hitbox.values.eject.y);
+                }
 				//facing left version
 			}
 

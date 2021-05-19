@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -43,12 +44,19 @@ namespace Player
 		[SerializeField] AttackBehavior forwardCharged;
 		[SerializeField] AttackBehavior upCharged;
 
-		public AttackBehavior currentAttack;
+		[HideInInspector] public AttackBehavior currentAttack;
+
+		[SerializeField] List<GameObject> attackParts;
 		#endregion
 
 		// Start is called before the first frame update
 		void Start()
 		{
+			foreach (GameObject attackPart in attackParts)
+			{
+				attackPart.SetActive(false);
+			}
+
 			extraJumpsReserve = extraJumps;
 			currentAttack = null;
         }

@@ -16,13 +16,13 @@ namespace Player
         {
             if(collision.gameObject.CompareTag("HitBox")/*.layer == hitboxLayer*/)
             {
-                MakeEject(collision.gameObject.GetComponent<HitboxValue>());
+                MakeEject(collision.gameObject.GetComponent<HitboxInfo>());
             }
         }
 
-        private void MakeEject(HitboxValue hitbox)
+        private void MakeEject(HitboxInfo hitbox)
         {
-            charManager.Eject(hitbox.eject, hitbox.damageInput);
+            charManager.Eject(hitbox.values.eject, hitbox.values.damageInput);
         }
     }
 }

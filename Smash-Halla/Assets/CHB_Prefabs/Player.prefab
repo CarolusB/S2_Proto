@@ -1,5 +1,248 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &460245012492629424
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6907400955925942523}
+  - component: {fileID: 6010857688260807133}
+  m_Layer: 10
+  m_Name: UpAttack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6907400955925942523
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460245012492629424}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2015390833643812206}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6010857688260807133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460245012492629424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6f79f90e68cf2d4ab980a0a73bb0909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPlayer: {fileID: 6398852953407708715}
+  rightVersion: {fileID: 0}
+  leftVersion: {fileID: 0}
+  hitboxes:
+  - {fileID: 6398852954028297711}
+  setValues:
+  - eject: {x: 0.93, y: 0.36}
+    damageInput: 9
+    localPriority: 10
+--- !u!1 &887025526979699868
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2015390833643812206}
+  m_Layer: 10
+  m_Name: AttackBehaviors
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2015390833643812206
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887025526979699868}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8218825086289395253}
+  - {fileID: 6907400955925942523}
+  - {fileID: 5273735502914752378}
+  - {fileID: 3117509279739279977}
+  - {fileID: 455988237358437645}
+  m_Father: {fileID: 6398852953529869469}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1703871687713698567
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5273735502914752378}
+  - component: {fileID: 5715653953422815237}
+  m_Layer: 10
+  m_Name: ForwardCharged
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5273735502914752378
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703871687713698567}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2015390833643812206}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5715653953422815237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703871687713698567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6f79f90e68cf2d4ab980a0a73bb0909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPlayer: {fileID: 6398852953407708715}
+  rightVersion: {fileID: 0}
+  leftVersion: {fileID: 0}
+  hitboxes:
+  - {fileID: 6398852954028297711}
+  setValues:
+  - eject: {x: 0.93, y: 0.36}
+    damageInput: 9
+    localPriority: 10
+--- !u!1 &2195710574051803892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3117509279739279977}
+  - component: {fileID: 7342068319917494716}
+  m_Layer: 10
+  m_Name: UpCharged
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3117509279739279977
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2195710574051803892}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2015390833643812206}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7342068319917494716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2195710574051803892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6f79f90e68cf2d4ab980a0a73bb0909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPlayer: {fileID: 6398852953407708715}
+  rightVersion: {fileID: 0}
+  leftVersion: {fileID: 0}
+  hitboxes:
+  - {fileID: 6398852954028297711}
+  setValues:
+  - eject: {x: 0.93, y: 0.36}
+    damageInput: 9
+    localPriority: 10
+--- !u!1 &3921297717715413160
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8218825086289395253}
+  - component: {fileID: 8419604187972192977}
+  m_Layer: 10
+  m_Name: NeutralAttack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8218825086289395253
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3921297717715413160}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2015390833643812206}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8419604187972192977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3921297717715413160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6f79f90e68cf2d4ab980a0a73bb0909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPlayer: {fileID: 6398852953407708715}
+  rightVersion: {fileID: 0}
+  leftVersion: {fileID: 0}
+  hitboxes:
+  - {fileID: 6398852954028297711}
+  setValues:
+  - eject: {x: 0.93, y: 0.36}
+    damageInput: 9
+    localPriority: 10
 --- !u!1 &6398852952188410931
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,9 +396,7 @@ MonoBehaviour:
   extraJumpsReserve: 0
   speed: 3.5
   jumpForce: 80
-  attacksGroup: {fileID: 6398852953529869470}
   neutralAttack: {fileID: 0}
-  forwardAttack: {fileID: 0}
   upAttack: {fileID: 0}
   neutralAir: {fileID: 0}
   forwardAir: {fileID: 0}
@@ -164,6 +405,8 @@ MonoBehaviour:
   downAir: {fileID: 0}
   forwardCharged: {fileID: 0}
   upCharged: {fileID: 0}
+  currentAttack: {fileID: 0}
+  attackParts: []
 --- !u!114 &6398852952479827623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,7 +572,7 @@ GameObject:
   - component: {fileID: 6398852953407708715}
   - component: {fileID: 6398852953407708716}
   m_Layer: 11
-  m_Name: SimpAttack
+  m_Name: AttackPlayable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -349,7 +592,7 @@ Transform:
   - {fileID: 6398852954040759450}
   - {fileID: 6398852954028297681}
   m_Father: {fileID: 6398852953529869469}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!320 &6398852953407708715
 PlayableDirector:
@@ -420,6 +663,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 2015390833643812206}
   - {fileID: 6398852953407708717}
   m_Father: {fileID: 6398852952479827624}
   m_RootOrder: 1
@@ -484,9 +728,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7838d43b56ff1148b606f13a3a07711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eject: {x: 1.2, y: 1.52}
-  damageInput: 22
-  localPriority: 255
+  values:
+    eject: {x: 0.93, y: 0.36}
+    damageInput: 9
+    localPriority: 10
 --- !u!1 &6398852954040759451
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,3 +813,55 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &6488310805635489773
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 455988237358437645}
+  - component: {fileID: 8250248300118884748}
+  m_Layer: 10
+  m_Name: NeutralAir
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &455988237358437645
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6488310805635489773}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2015390833643812206}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8250248300118884748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6488310805635489773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6f79f90e68cf2d4ab980a0a73bb0909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPlayer: {fileID: 6398852953407708715}
+  rightVersion: {fileID: 0}
+  leftVersion: {fileID: 0}
+  hitboxes:
+  - {fileID: 6398852954028297711}
+  setValues:
+  - eject: {x: 0.93, y: 0.36}
+    damageInput: 9
+    localPriority: 10
