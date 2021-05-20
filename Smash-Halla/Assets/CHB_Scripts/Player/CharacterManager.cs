@@ -13,7 +13,7 @@ namespace Player
 
         protected virtual void Start()
         {
-			damage = 0;
+			damage = 0f;
         }
 
         public virtual void Eject(Vector2 _vector, float damageInput)

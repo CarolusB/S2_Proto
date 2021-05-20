@@ -14,6 +14,10 @@ namespace Player
 		[SerializeField] PlayableAsset rightVersion;
 		[SerializeField] PlayableAsset leftVersion;
 
+		[SerializeField] int endLag = 20;
+		[SerializeField] int autoCancelWindow = 0;
+		[SerializeField] int autoCancelLag = 9;
+
 		public HitboxInfo[] hitboxes;
 		[SerializeField] HitboxValue[] setValues;
 		bool isOngoing;
@@ -28,6 +32,7 @@ namespace Player
 		void Start()
 		{
 			Ongoing = false;
+			Debug.Log(attackPlayer.gameObject.name + " " + attackPlayer.state);
 		}
 
 		public AttackBehavior StartAttack(bool _facingRight)
@@ -57,16 +62,38 @@ namespace Player
 			return this;
 		}
 
+		int endLagFrameCount;
+		int targetLag;
         protected virtual IEnumerator ProceedAttack()
         {
-            throw new NotImplementedException();
+			endLagFrameCount = 0;
+			targetLag = endLag;
+			yield return new WaitUntil(() => attackPlayer.state == PlayState.Paused);
+
+			while(endLagFrameCount < targetLag)
+            {
+				yield return new WaitForFixedUpdate();
+				endLagFrameCount++;
+            }
+
+			Ongoing = false;
         }
 
-        public void Stop()
+		//int autoCancelDelay;
+        public void Stop(bool canAutoCancel)
         {
 			//Cancel when hit by opponent attack
 			attackPlayer.Stop();
-			Ongoing = false;
+
+            if (canAutoCancel)
+            {
+				if (endLagFrameCount < autoCancelWindow)
+                {
+					//autoCancelDelay = 0;
+					targetLag = autoCancelLag;
+				}
+            }
+			else Ongoing = false;
         }
 	}
 }

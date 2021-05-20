@@ -9,6 +9,7 @@ namespace Player
 	{
 		#region Variables
 		public PlayerController playerController;
+		[SerializeField] int hitStunBaseLag = 15;
 		Coroutine currentHitStun;
         #endregion
 
@@ -22,7 +23,7 @@ namespace Player
 		public override void Eject(Vector2 _vector, float damageInput)
         {
 			base.Eject(_vector, damageInput);
-			playerController.currentAttack.Stop();
+			playerController.currentAttack.Stop(false);
 			SetHitStun();
         }
 
@@ -35,10 +36,12 @@ namespace Player
         }
 
 		int hitStunFrameCount;
+		int hitStunTotal;
 		IEnumerator HitStunRecovery()
         {
 			hitStunFrameCount = 0;
-			while(hitStunFrameCount < 15 + (int)(damage * 0.41f))
+			hitStunTotal = hitStunBaseLag + (int)(damage * 0.41f);
+			while (hitStunFrameCount < hitStunTotal)
             {
 				yield return new WaitForFixedUpdate();
 				hitStunFrameCount++;

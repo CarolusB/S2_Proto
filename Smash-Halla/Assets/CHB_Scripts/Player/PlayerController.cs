@@ -34,6 +34,9 @@ namespace Player
 		public float speed;
 		public float jumpForce;
 
+		[SerializeField] int maxChargeTime = 60;
+		[SerializeField] int chargeMaxHoldTime = 100;
+
 		[Header("Attacks")]
 		[SerializeField] AttackBehavior neutralAttack;
 		[SerializeField] AttackBehavior upAttack;
@@ -307,7 +310,8 @@ namespace Player
 				}
 
 				canAttack = false;
-            }
+				StartCoroutine(ChargingAttack());
+			}
         }
 
 		private void CheckAttackEnding()
@@ -326,13 +330,13 @@ namespace Player
 			chargingFrameCount = 0;
 			addingDamage = 0f;
 
-            while (chargedInput && chargingFrameCount < 100)
+            while (chargedInput && chargingFrameCount < chargeMaxHoldTime)
             {
                 yield return new WaitForFixedUpdate();
                 chargingFrameCount++;
             }
 
-			addingDamage = 0.0029f * Mathf.Pow(Mathf.Min(chargingFrameCount, 60), 2);
+			addingDamage = 0.0029f * Mathf.Pow(Mathf.Min(chargingFrameCount, maxChargeTime), 2);
 
 			foreach(HitboxInfo hitbox in currentAttack.hitboxes)
             {
