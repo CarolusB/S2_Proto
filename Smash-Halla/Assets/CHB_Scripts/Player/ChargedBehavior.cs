@@ -16,10 +16,10 @@ namespace Player
             StartCoroutine(base.ProceedAttack());
         }
 
-        public void ChargeDamages()
-        {
+        //public void ChargeDamages()
+        //{
 
-        }
+        //}
     }
 }
 

@@ -30,22 +30,18 @@ namespace Player
 			Ongoing = false;
 		}
 
-		// Update is called once per frame
-		void Update()
-		{
-			
-		}
-		
 		public AttackBehavior StartAttack(bool _facingRight)
         {
-            for (int i = 0; i < hitboxes.Length; i++)
+			Ongoing = true;
+
+			for (int i = 0; i < hitboxes.Length; i++)
             {
 				hitboxes[i].values = setValues[i];
             }
 
 			if (_facingRight)
             {
-				//facing right version
+				attackPlayer.playableAsset = rightVersion;
             }
             else
             {
@@ -53,10 +49,10 @@ namespace Player
                 {
 					hitbox.values.eject = new Vector2(-hitbox.values.eject.x, hitbox.values.eject.y);
                 }
-				//facing left version
+				
+				attackPlayer.playableAsset = leftVersion;
 			}
 
-			Ongoing = true;
 			StartCoroutine(ProceedAttack());
 			return this;
 		}

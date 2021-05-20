@@ -94,7 +94,7 @@ namespace Player
 		{
 			GetDirectionFromStick();
 
-			if (!hitStun)/*&& !cantAct*/
+			if (!hitStun || canAttack)
             {
 				MovementInput();
 				JumpInput();
@@ -252,6 +252,8 @@ namespace Player
                     {
 						currentAttack = neutralAttack.StartAttack(facingRight);
 					}
+
+					canAttack = false;
                 }
                 else
                 {
@@ -303,6 +305,8 @@ namespace Player
                 {
 					currentAttack = forwardCharged.StartAttack(facingRight);
 				}
+
+				canAttack = false;
             }
         }
 
@@ -311,15 +315,28 @@ namespace Player
             if (currentAttack != null && !currentAttack.Ongoing)
             {
 				currentAttack = null;
+				canAttack = true;
             }
 		}
 
+		int chargingFrameCount;
+		float addingDamage;
 		IEnumerator ChargingAttack()
         {
-			//framecount aug and launch on run out or release
+			chargingFrameCount = 0;
+			addingDamage = 0f;
+
+            while (chargedInput && chargingFrameCount < 100)
+            {
+                yield return new WaitForFixedUpdate();
+                chargingFrameCount++;
+            }
+
+			addingDamage = 0.0029f * Mathf.Pow(Mathf.Min(chargingFrameCount, 60), 2);
+
 			foreach(HitboxInfo hitbox in currentAttack.hitboxes)
             {
-				hitbox.values.damageInput += 3; //koneri mais oki
+				hitbox.values.damageInput += addingDamage; //koneri mais oki
             }
 			yield return null;
         }
