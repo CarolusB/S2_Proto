@@ -58,6 +58,7 @@ namespace Player
 				attackPlayer.playableAsset = leftVersion;
 			}
 
+			attackPlayer.Play();
 			StartCoroutine(ProceedAttack());
 			return this;
 		}
