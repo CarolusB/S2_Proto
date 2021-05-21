@@ -1129,7 +1129,7 @@ GameObject:
   - component: {fileID: 1761533027}
   m_Layer: 10
   m_Name: Dummy
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1282,9 +1282,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6faaececc3c6dd24f87922edf219edef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitboxLayer:
-    serializedVersion: 2
-    m_Bits: 2048
   charManager: {fileID: 1761533029}
 --- !u!1 &1934649606
 GameObject:

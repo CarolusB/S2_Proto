@@ -40,7 +40,7 @@ namespace Player
 
         private void MakeEject(HitboxInfo hitbox)
         {
-            charManager.Eject(hitbox.values.eject, hitbox.values.damageInput);
+            charManager.Eject(hitbox.values.eject, hitbox.values.damageInput, hitbox.values.giveIntangibility, hitbox.values.giveIntangibilityFrames);
         }
     }
 }

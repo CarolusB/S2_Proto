@@ -11,6 +11,8 @@ namespace Player
 		public PlayerController playerController;
 		[SerializeField] int hitStunBaseLag = 15;
 		Coroutine currentHitStun;
+
+		bool respawning = false;
         #endregion
 
         // Start is called before the first frame update
@@ -20,10 +22,12 @@ namespace Player
 			characterRb = playerController.playerRb;
 		}
 
-		public override void Eject(Vector2 _vector, float damageInput)
+		public override void Eject(Vector2 _vector, float damageInput, bool giveIntangibility, int intangibilityFrames)
         {
-			base.Eject(_vector, damageInput);
-			playerController.currentAttack.Stop(false);
+			if (invincible)
+				return;
+			base.Eject(_vector, damageInput, giveIntangibility, intangibilityFrames);
+			if(playerController.currentAttack != null) playerController.currentAttack.Stop(false);
 			SetHitStun();
         }
 
@@ -49,6 +53,23 @@ namespace Player
 			//yield return new WaitForSeconds(0.3f + damage * 0.0065f);
 			playerController.hitStun = false;
         }
-	}
+
+        public override void Respawn()
+        {
+			respawning = true;
+			base.Respawn();
+        }
+        protected override IEnumerator IntangibleTime(int time)
+        {
+            StartCoroutine(base.IntangibleTime(time));
+
+			if (respawning)
+			{
+				yield return new WaitUntil(() => !invincible || playerController.currentAttack != null);
+				invincible = false;
+			}
+			else yield return null;
+        }
+    }
 }
 

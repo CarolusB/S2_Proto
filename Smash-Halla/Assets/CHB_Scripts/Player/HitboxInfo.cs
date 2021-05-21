@@ -10,6 +10,8 @@ namespace Player
 		public Vector2 eject; /*can give direction AND force*/
 		public float damageInput;
 		public int localPriority;
+		public bool giveIntangibility;
+		public int giveIntangibilityFrames;
 
 		//public HitboxValue(Vector2 _eject, bool _toRight, int _damageInput, int _localPriority)
 		//{
@@ -17,7 +19,7 @@ namespace Player
 		//		eject = new Vector2(-_eject.x, _eject.y);
 		//	else
 		//		eject = _eject;
-			
+
 		//	damageInput = _damageInput;
 		//	localPriority = _localPriority;
 		//}
