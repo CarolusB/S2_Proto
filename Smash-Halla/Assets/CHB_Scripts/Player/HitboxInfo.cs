@@ -8,6 +8,7 @@ namespace Player
 	public struct HitboxValue
 	{
 		public Vector2 eject; /*can give direction AND force*/
+		public float ejectAddCoef;
 		public float damageInput;
 		public int localPriority;
 		public bool giveIntangibility;

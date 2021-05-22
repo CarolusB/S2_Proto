@@ -53,8 +53,11 @@ MonoBehaviour:
   - {fileID: 6398852954028297711}
   setValues:
   - eject: {x: 0.93, y: 0.36}
+    ejectAddCoef: 0
     damageInput: 9
     localPriority: 10
+    giveIntangibility: 0
+    giveIntangibilityFrames: 0
 --- !u!1 &887025526979699868
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,8 +150,11 @@ MonoBehaviour:
   - {fileID: 6398852954028297711}
   setValues:
   - eject: {x: 0.93, y: 0.36}
+    ejectAddCoef: 0
     damageInput: 9
     localPriority: 10
+    giveIntangibility: 0
+    giveIntangibilityFrames: 0
 --- !u!1 &1703871687713698567
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,9 +198,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e0840eed495e734eb55bc879f5b07a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPlayer: {fileID: 0}
-  rightVersion: {fileID: 0}
-  leftVersion: {fileID: 0}
+  attackPlayer: {fileID: 6398852953407708715}
+  rightVersion: {fileID: 11400000, guid: cbfeacd470aceaa4592612135d60ebf5, type: 2}
+  leftVersion: {fileID: 11400000, guid: 4e4dda5126b466e42aeb47d8b4118ba2, type: 2}
   endLag: 20
   autoCancelWindow: 0
   autoCancelLag: 9
@@ -202,8 +208,11 @@ MonoBehaviour:
   - {fileID: 6398852954028297711}
   setValues:
   - eject: {x: 0, y: 0}
+    ejectAddCoef: 0
     damageInput: 0
     localPriority: 0
+    giveIntangibility: 0
+    giveIntangibilityFrames: 0
   playerController: {fileID: 6398852952479827626}
 --- !u!1 &2195710574051803892
 GameObject:
@@ -258,8 +267,11 @@ MonoBehaviour:
   - {fileID: 6398852954028297711}
   setValues:
   - eject: {x: 0, y: 0}
+    ejectAddCoef: 0
     damageInput: 0
     localPriority: 0
+    giveIntangibility: 0
+    giveIntangibilityFrames: 0
   playerController: {fileID: 6398852952479827626}
 --- !u!1 &3921297717715413160
 GameObject:
@@ -314,8 +326,11 @@ MonoBehaviour:
   - {fileID: 6398852954028297711}
   setValues:
   - eject: {x: 0.93, y: 0.36}
+    ejectAddCoef: 0
     damageInput: 9
     localPriority: 10
+    giveIntangibility: 0
+    giveIntangibilityFrames: 0
 --- !u!1 &4621008028984586840
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,8 +384,11 @@ MonoBehaviour:
   - {fileID: 6398852954028297711}
   setValues:
   - eject: {x: 0.93, y: 0.36}
+    ejectAddCoef: 0
     damageInput: 9
     localPriority: 10
+    giveIntangibility: 0
+    giveIntangibilityFrames: 0
 --- !u!1 &5472683620753261317
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,8 +442,11 @@ MonoBehaviour:
   - {fileID: 6398852954028297711}
   setValues:
   - eject: {x: 0.93, y: 0.36}
+    ejectAddCoef: 0
     damageInput: 9
     localPriority: 10
+    giveIntangibility: 0
+    giveIntangibilityFrames: 0
 --- !u!1 &6398852952188410931
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,6 +579,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   characterRb: {fileID: 0}
+  respawnPoint: {fileID: 0}
   playerController: {fileID: 6398852952479827626}
   hitStunBaseLag: 15
 --- !u!114 &6398852952479827626
@@ -868,7 +890,7 @@ GameObject:
   - component: {fileID: 6398852954028297680}
   - component: {fileID: 6398852954028297711}
   m_Layer: 11
-  m_Name: collision
+  m_Name: collisionMain
   m_TagString: HitBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -918,8 +940,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   values:
     eject: {x: 0.93, y: 0.36}
+    ejectAddCoef: 0
     damageInput: 9
     localPriority: 10
+    giveIntangibility: 0
+    giveIntangibilityFrames: 0
 --- !u!1 &6398852954040759451
 GameObject:
   m_ObjectHideFlags: 0
@@ -1054,8 +1079,11 @@ MonoBehaviour:
   - {fileID: 6398852954028297711}
   setValues:
   - eject: {x: 0.93, y: 0.36}
+    ejectAddCoef: 0
     damageInput: 9
     localPriority: 10
+    giveIntangibility: 0
+    giveIntangibilityFrames: 0
 --- !u!1 &8952754046450057013
 GameObject:
   m_ObjectHideFlags: 0
@@ -1109,5 +1137,8 @@ MonoBehaviour:
   - {fileID: 6398852954028297711}
   setValues:
   - eject: {x: 0.93, y: 0.36}
+    ejectAddCoef: 0
     damageInput: 9
     localPriority: 10
+    giveIntangibility: 0
+    giveIntangibilityFrames: 0
