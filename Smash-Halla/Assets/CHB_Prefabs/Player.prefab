@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e0840eed495e734eb55bc879f5b07a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPlayer: {fileID: 0}
+  attackPlayer: {fileID: 6398852953407708715}
   rightVersion: {fileID: 0}
   leftVersion: {fileID: 0}
   endLag: 20
@@ -604,15 +604,15 @@ MonoBehaviour:
   jumpForce: 80
   maxChargeTime: 60
   chargeMaxHoldTime: 100
-  neutralAttack: {fileID: 0}
-  upAttack: {fileID: 0}
-  neutralAir: {fileID: 0}
-  forwardAir: {fileID: 0}
-  backAir: {fileID: 0}
-  upAir: {fileID: 0}
-  downAir: {fileID: 0}
-  forwardCharged: {fileID: 0}
-  upCharged: {fileID: 0}
+  neutralAttack: {fileID: 8419604187972192977}
+  upAttack: {fileID: 6010857688260807133}
+  neutralAir: {fileID: 8250248300118884748}
+  forwardAir: {fileID: 3327783736085919776}
+  backAir: {fileID: 8766986081733407679}
+  upAir: {fileID: 330290155086632861}
+  downAir: {fileID: 505927252613897445}
+  forwardCharged: {fileID: 5945473481118385937}
+  upCharged: {fileID: 4578147607497039355}
   currentAttack: {fileID: 0}
   attackParts:
   - {fileID: 6398852954040759451}

@@ -16,6 +16,9 @@ namespace Stage
             if(collision.gameObject.CompareTag("Player")/*.layer == playerLayer*/)
             {
                 PlayerController playerCaught = collision.gameObject.GetComponent<PlayerController>();
+
+                if (playerCaught == null) return;
+
                 playerCaught.inAir = false;
                 playerCaught.ResetJumps();
 

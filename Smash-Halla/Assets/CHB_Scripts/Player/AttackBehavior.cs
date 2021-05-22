@@ -46,19 +46,21 @@ namespace Player
 
 			if (_facingRight)
             {
-				attackPlayer.playableAsset = rightVersion;
-            }
+				//attackPlayer.playableAsset = rightVersion;
+				attackPlayer.Play(rightVersion);
+			}
             else
             {
 				foreach(HitboxInfo hitbox in hitboxes)
                 {
 					hitbox.values.eject = new Vector2(-hitbox.values.eject.x, hitbox.values.eject.y);
                 }
-				
-				attackPlayer.playableAsset = leftVersion;
+
+				//attackPlayer.playableAsset = leftVersion;
+				attackPlayer.Play(leftVersion);
 			}
 
-			attackPlayer.Play();
+			//attackPlayer.Play();
 			StartCoroutine(ProceedAttack());
 			return this;
 		}

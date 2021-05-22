@@ -256,7 +256,7 @@ namespace Player
 						currentAttack = neutralAttack.StartAttack(facingRight);
 					}
 
-					canAttack = false;
+					
                 }
                 else
                 {
@@ -296,7 +296,9 @@ namespace Player
 							currentAttack = downAir.StartAttack(facingRight);
 							break;
                     }
-                }
+
+					canAttack = false;
+				}
             }
 			else if (chargedInput && !inAir)
             {
