@@ -12,6 +12,16 @@ namespace Player
 
         protected override IEnumerator ProceedAttack()
         {
+            yield return new WaitForEndOfFrame();
+
+            //while (playerController.IsCharging)
+            //{
+            //    yield return new WaitForEndOfFrame();
+
+            //    if(!playerController.IsCharging) StartCoroutine(base.ProceedAttack());
+            //}
+
+            //yield return null;
             yield return new WaitUntil(() => !playerController.IsCharging);
             StartCoroutine(base.ProceedAttack());
         }

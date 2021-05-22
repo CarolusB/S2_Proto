@@ -46,8 +46,8 @@ namespace Player
 
 			if (_facingRight)
             {
-				//attackPlayer.playableAsset = rightVersion;
-				attackPlayer.Play(rightVersion);
+				attackPlayer.playableAsset = rightVersion;
+				//attackPlayer.Play(rightVersion);
 			}
             else
             {
@@ -56,8 +56,8 @@ namespace Player
 					hitbox.values.eject = new Vector2(-hitbox.values.eject.x, hitbox.values.eject.y);
                 }
 
-				//attackPlayer.playableAsset = leftVersion;
-				attackPlayer.Play(leftVersion);
+				attackPlayer.playableAsset = leftVersion;
+				//attackPlayer.Play(leftVersion);
 			}
 
 			//attackPlayer.Play();
@@ -71,6 +71,7 @@ namespace Player
         {
 			endLagFrameCount = 0;
 			targetLag = endLag;
+			attackPlayer.Play();
 			yield return new WaitUntil(() => attackPlayer.state == PlayState.Paused);
 
 			while(endLagFrameCount < targetLag)

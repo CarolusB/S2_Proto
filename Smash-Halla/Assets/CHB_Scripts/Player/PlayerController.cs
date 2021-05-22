@@ -19,7 +19,7 @@ namespace Player
 		bool longHopIntention = false;
 		bool attackInput = false;
 		bool chargedInput = false;
-		public bool IsCharging { get { return chargedInput; } }
+		public bool IsCharging;
 		
 		bool facingRight = false;
 
@@ -245,7 +245,9 @@ namespace Player
 			
 			if (attackInput)
             {
-                if (!inAir)
+				canAttack = false;
+
+				if (!inAir)
                 {
 					if(stickDirection == StickDirection.Up)
                     {
@@ -297,12 +299,14 @@ namespace Player
 							break;
                     }
 
-					canAttack = false;
+					
 				}
             }
 			else if (chargedInput && !inAir)
             {
-                if(stickDirection == StickDirection.Up)
+				canAttack = false;
+				IsCharging = true;
+				if (stickDirection == StickDirection.Up)
                 {
 					currentAttack = upCharged.StartAttack(facingRight);
 				}
@@ -311,7 +315,7 @@ namespace Player
 					currentAttack = forwardCharged.StartAttack(facingRight);
 				}
 
-				canAttack = false;
+				//canAttack = false;
 				StartCoroutine(ChargingAttack());
 			}
         }
@@ -331,8 +335,8 @@ namespace Player
         {
 			chargingFrameCount = 0;
 			addingDamage = 0f;
-
-            while (chargedInput && chargingFrameCount < chargeMaxHoldTime)
+			yield return new WaitForEndOfFrame();
+            while (!chargedInput && chargingFrameCount < chargeMaxHoldTime)
             {
                 yield return new WaitForFixedUpdate();
                 chargingFrameCount++;
@@ -344,6 +348,7 @@ namespace Player
             {
 				hitbox.values.damageInput += addingDamage; //koneri mais oki
             }
+			IsCharging = false;
 			yield return null;
         }
         #endregion

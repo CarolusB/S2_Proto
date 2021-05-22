@@ -141,8 +141,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPlayer: {fileID: 6398852953407708715}
-  rightVersion: {fileID: 0}
-  leftVersion: {fileID: 0}
+  rightVersion: {fileID: 11400000, guid: cbfeacd470aceaa4592612135d60ebf5, type: 2}
+  leftVersion: {fileID: 11400000, guid: 4e4dda5126b466e42aeb47d8b4118ba2, type: 2}
   endLag: 20
   autoCancelWindow: 10
   autoCancelLag: 9
@@ -597,6 +597,7 @@ MonoBehaviour:
   hitStun: 0
   inAir: 0
   canAttack: 1
+  IsCharging: 0
   playerRb: {fileID: 6398852952479827627}
   extraJumps: 1
   extraJumpsReserve: 0

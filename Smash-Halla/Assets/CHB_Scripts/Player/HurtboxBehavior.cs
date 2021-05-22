@@ -20,7 +20,8 @@ namespace Player
             if(collision.gameObject.CompareTag("HitBox")/*.layer == hitboxLayer*/)
             {
                 //ready for an attack with multiple hitboxes available at the same time
-                hitboxesCaught.Add(collision.gameObject.GetComponent<HitboxInfo>());
+                HitboxInfo hitboxCatch = collision.gameObject.GetComponent<HitboxInfo>();
+                hitboxesCaught.Add(hitboxCatch);
 
                 if (!decisionOngoing)
                     StartCoroutine(DamageDecision());
