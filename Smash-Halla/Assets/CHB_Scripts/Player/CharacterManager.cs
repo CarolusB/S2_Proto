@@ -8,7 +8,7 @@ namespace Player
 	{
 		#region Variables
 		public float damage;
-		public static int stocks;
+		public int stocks;
 		[SerializeField] protected Rigidbody2D characterRb;
 		public Transform respawnPoint;
 		public static int respawnDelay;
