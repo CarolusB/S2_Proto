@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameManagement;
 
 namespace Player
 {
@@ -9,6 +10,7 @@ namespace Player
 		#region Variables
 		public float damage;
 		public int stocks;
+		[SerializeField] FighterLife LifeUI;
 		[SerializeField] protected Rigidbody2D characterRb;
 		public Transform respawnPoint;
 		public static int respawnDelay;
@@ -19,6 +21,8 @@ namespace Player
         protected virtual void Start()
         {
 			damage = 0f;
+			LifeUI.UpdateDamages(damage);
+			LifeUI.UpdateStocks(stocks);
         }
 
         public virtual void Eject(Vector2 _vector, float damageInput, bool giveIntangibility, int intangibilityFrames)
@@ -26,6 +30,7 @@ namespace Player
 			if (invincible)
 				return;
 			damage += damageInput;
+			LifeUI.UpdateDamages(damage);
 			characterRb.AddForce(_vector * damage, ForceMode2D.Impulse);
 		}
 
@@ -34,8 +39,9 @@ namespace Player
 			StopAllCoroutines();
 			stocks--;
 			damage = 0f;
-
-			if(stocks > 0)
+			LifeUI.UpdateDamages(damage);
+			LifeUI.UpdateStocks(stocks);
+			if (stocks > 0)
             {
 				StartCoroutine(RespawnDelay());
             }
