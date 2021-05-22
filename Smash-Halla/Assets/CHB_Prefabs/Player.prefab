@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPlayer: {fileID: 6398852953407708715}
-  rightVersion: {fileID: 0}
-  leftVersion: {fileID: 0}
+  rightVersion: {fileID: 11400000, guid: 81f0f72aa3d65db47bb7de872c89ff85, type: 2}
+  leftVersion: {fileID: 11400000, guid: cdeb9ed7e8860554895a5debc0144e4b, type: 2}
   endLag: 20
   autoCancelWindow: 0
   autoCancelLag: 9
@@ -258,8 +258,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPlayer: {fileID: 6398852953407708715}
-  rightVersion: {fileID: 0}
-  leftVersion: {fileID: 0}
+  rightVersion: {fileID: 11400000, guid: cbfeacd470aceaa4592612135d60ebf5, type: 2}
+  leftVersion: {fileID: 11400000, guid: 4e4dda5126b466e42aeb47d8b4118ba2, type: 2}
   endLag: 20
   autoCancelWindow: 0
   autoCancelLag: 9
@@ -317,8 +317,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPlayer: {fileID: 6398852953407708715}
-  rightVersion: {fileID: 0}
-  leftVersion: {fileID: 0}
+  rightVersion: {fileID: 11400000, guid: cbfeacd470aceaa4592612135d60ebf5, type: 2}
+  leftVersion: {fileID: 11400000, guid: 4e4dda5126b466e42aeb47d8b4118ba2, type: 2}
   endLag: 20
   autoCancelWindow: 0
   autoCancelLag: 9
@@ -375,8 +375,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPlayer: {fileID: 6398852953407708715}
-  rightVersion: {fileID: 0}
-  leftVersion: {fileID: 0}
+  rightVersion: {fileID: 11400000, guid: 81f0f72aa3d65db47bb7de872c89ff85, type: 2}
+  leftVersion: {fileID: 11400000, guid: cdeb9ed7e8860554895a5debc0144e4b, type: 2}
   endLag: 20
   autoCancelWindow: 10
   autoCancelLag: 9
@@ -433,8 +433,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPlayer: {fileID: 6398852953407708715}
-  rightVersion: {fileID: 0}
-  leftVersion: {fileID: 0}
+  rightVersion: {fileID: 11400000, guid: 4e4dda5126b466e42aeb47d8b4118ba2, type: 2}
+  leftVersion: {fileID: 11400000, guid: cbfeacd470aceaa4592612135d60ebf5, type: 2}
   endLag: 20
   autoCancelWindow: 10
   autoCancelLag: 9
@@ -516,7 +516,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 084fc5429bad1a6429154c1bb9e0b622, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -814,7 +814,7 @@ PlayableDirector:
   m_GameObject: {fileID: 6398852953407708718}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: cbfeacd470aceaa4592612135d60ebf5, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: 4e4dda5126b466e42aeb47d8b4118ba2, type: 2}
   m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
@@ -826,6 +826,12 @@ PlayableDirector:
     value: {fileID: 6398852954028297682}
   - key: {fileID: -2186513483100160665, guid: cbfeacd470aceaa4592612135d60ebf5, type: 2}
     value: {fileID: 6398852954040759451}
+  - key: {fileID: 6311878192457368378, guid: 4e4dda5126b466e42aeb47d8b4118ba2, type: 2}
+    value: {fileID: 6398852953407708716}
+  - key: {fileID: 3597658100163024738, guid: 4e4dda5126b466e42aeb47d8b4118ba2, type: 2}
+    value: {fileID: 6398852954040759451}
+  - key: {fileID: -2186513483100160665, guid: 4e4dda5126b466e42aeb47d8b4118ba2, type: 2}
+    value: {fileID: 6398852954028297682}
   m_ExposedReferences:
     m_References: []
 --- !u!95 &6398852953407708716
@@ -1015,7 +1021,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 438608444985344459fbc1d650b6fa37, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1071,8 +1077,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPlayer: {fileID: 6398852953407708715}
-  rightVersion: {fileID: 0}
-  leftVersion: {fileID: 0}
+  rightVersion: {fileID: 11400000, guid: cbfeacd470aceaa4592612135d60ebf5, type: 2}
+  leftVersion: {fileID: 11400000, guid: 4e4dda5126b466e42aeb47d8b4118ba2, type: 2}
   endLag: 20
   autoCancelWindow: 10
   autoCancelLag: 9
@@ -1129,8 +1135,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPlayer: {fileID: 6398852953407708715}
-  rightVersion: {fileID: 0}
-  leftVersion: {fileID: 0}
+  rightVersion: {fileID: 11400000, guid: cb7a2510b5e9cd24f86508389838a6f7, type: 2}
+  leftVersion: {fileID: 11400000, guid: 56dd887c6c9eab140ade4f3829a3a0ce, type: 2}
   endLag: 20
   autoCancelWindow: 10
   autoCancelLag: 9

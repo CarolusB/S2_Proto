@@ -8,11 +8,11 @@ namespace Player
 	{
 		#region Variables
 		public float damage;
-		public static int stocks = 3;
+		public static int stocks;
 		[SerializeField] protected Rigidbody2D characterRb;
 		public Transform respawnPoint;
-		public static int respawnDelay = 150;
-		public static int respawnIntangibility = 180;
+		public static int respawnDelay;
+		public static int respawnIntangibility;
 		protected bool invincible = false;
         #endregion
 

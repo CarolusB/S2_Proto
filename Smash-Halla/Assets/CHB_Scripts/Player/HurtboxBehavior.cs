@@ -11,7 +11,6 @@ namespace Player
 		//[SerializeField] private LayerMask hitboxLayer;
         [SerializeField] private CharacterManager charManager;
         List<HitboxInfo> hitboxesCaught;
-        HitboxInfo hitboxChosen;
         bool decisionOngoing = false;
         #endregion
 
@@ -19,12 +18,16 @@ namespace Player
         {
             if(collision.gameObject.CompareTag("HitBox")/*.layer == hitboxLayer*/)
             {
+                MakeEject(collision.gameObject.GetComponent<HitboxInfo>());
                 //ready for an attack with multiple hitboxes available at the same time
-                HitboxInfo hitboxCatch = collision.gameObject.GetComponent<HitboxInfo>();
-                hitboxesCaught.Add(hitboxCatch);
+                //HitboxInfo hitboxCatch = null;
+                //while(hitboxCatch == null)
+                //    hitboxCatch = collision.gameObject.GetComponent<HitboxInfo>();
 
-                if (!decisionOngoing)
-                    StartCoroutine(DamageDecision());
+                //hitboxesCaught.Add(hitboxCatch);
+
+                //if (!decisionOngoing)
+                //    StartCoroutine(DamageDecision());
             }
         }
 
