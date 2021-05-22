@@ -442,8 +442,8 @@ MonoBehaviour:
   - {fileID: 6398852954028297711}
   setValues:
   - eject: {x: -0.93, y: 0.36}
-    ejectAddCoef: 0
-    damageInput: 9
+    ejectAddCoef: 0.21
+    damageInput: 18
     localPriority: 10
     giveIntangibility: 0
     giveIntangibilityFrames: 0
@@ -561,6 +561,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6398852952188410930}
+  - {fileID: 6949532141508312644}
   - {fileID: 6398852953529869469}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -578,6 +579,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
+  stocks: 0
+  LifeUI: {fileID: 0}
   characterRb: {fileID: 0}
   respawnPoint: {fileID: 0}
   playerController: {fileID: 6398852952479827626}
@@ -814,7 +817,7 @@ PlayableDirector:
   m_GameObject: {fileID: 6398852953407708718}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 4e4dda5126b466e42aeb47d8b4118ba2, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: 56dd887c6c9eab140ade4f3829a3a0ce, type: 2}
   m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
@@ -829,9 +832,33 @@ PlayableDirector:
   - key: {fileID: 6311878192457368378, guid: 4e4dda5126b466e42aeb47d8b4118ba2, type: 2}
     value: {fileID: 6398852953407708716}
   - key: {fileID: 3597658100163024738, guid: 4e4dda5126b466e42aeb47d8b4118ba2, type: 2}
-    value: {fileID: 6398852954040759451}
-  - key: {fileID: -2186513483100160665, guid: 4e4dda5126b466e42aeb47d8b4118ba2, type: 2}
     value: {fileID: 6398852954028297682}
+  - key: {fileID: -2186513483100160665, guid: 4e4dda5126b466e42aeb47d8b4118ba2, type: 2}
+    value: {fileID: 6398852954040759451}
+  - key: {fileID: 3597658100163024738, guid: 81f0f72aa3d65db47bb7de872c89ff85, type: 2}
+    value: {fileID: 6398852954028297682}
+  - key: {fileID: -2186513483100160665, guid: 81f0f72aa3d65db47bb7de872c89ff85, type: 2}
+    value: {fileID: 6398852954040759451}
+  - key: {fileID: 8412303656681733055, guid: 81f0f72aa3d65db47bb7de872c89ff85, type: 2}
+    value: {fileID: 6398852953407708716}
+  - key: {fileID: 8412303656681733055, guid: cdeb9ed7e8860554895a5debc0144e4b, type: 2}
+    value: {fileID: 6398852953407708716}
+  - key: {fileID: 3597658100163024738, guid: cdeb9ed7e8860554895a5debc0144e4b, type: 2}
+    value: {fileID: 6398852954028297682}
+  - key: {fileID: -2186513483100160665, guid: cdeb9ed7e8860554895a5debc0144e4b, type: 2}
+    value: {fileID: 6398852954040759451}
+  - key: {fileID: 8412303656681733055, guid: cb7a2510b5e9cd24f86508389838a6f7, type: 2}
+    value: {fileID: 6398852953407708716}
+  - key: {fileID: 3597658100163024738, guid: cb7a2510b5e9cd24f86508389838a6f7, type: 2}
+    value: {fileID: 6398852954028297682}
+  - key: {fileID: -2186513483100160665, guid: cb7a2510b5e9cd24f86508389838a6f7, type: 2}
+    value: {fileID: 6398852954040759451}
+  - key: {fileID: 8412303656681733055, guid: 56dd887c6c9eab140ade4f3829a3a0ce, type: 2}
+    value: {fileID: 6398852953407708716}
+  - key: {fileID: 3597658100163024738, guid: 56dd887c6c9eab140ade4f3829a3a0ce, type: 2}
+    value: {fileID: 6398852954028297682}
+  - key: {fileID: -2186513483100160665, guid: 56dd887c6c9eab140ade4f3829a3a0ce, type: 2}
+    value: {fileID: 6398852954040759451}
   m_ExposedReferences:
     m_References: []
 --- !u!95 &6398852953407708716
@@ -883,7 +910,7 @@ Transform:
   - {fileID: 2015390833643812206}
   - {fileID: 6398852953407708717}
   m_Father: {fileID: 6398852952479827624}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6398852954028297682
 GameObject:
@@ -1077,8 +1104,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPlayer: {fileID: 6398852953407708715}
-  rightVersion: {fileID: 11400000, guid: cbfeacd470aceaa4592612135d60ebf5, type: 2}
-  leftVersion: {fileID: 11400000, guid: 4e4dda5126b466e42aeb47d8b4118ba2, type: 2}
+  rightVersion: {fileID: 11400000, guid: 03af366f24a913849be62e7c7858ceba, type: 2}
+  leftVersion: {fileID: 11400000, guid: e0b707e13c9ad6545a3e63099d56b59c, type: 2}
   endLag: 20
   autoCancelWindow: 10
   autoCancelLag: 9
@@ -1087,10 +1114,81 @@ MonoBehaviour:
   setValues:
   - eject: {x: 0.93, y: 0.36}
     ejectAddCoef: 0
-    damageInput: 20
+    damageInput: 11
     localPriority: 10
     giveIntangibility: 0
     giveIntangibilityFrames: 0
+--- !u!1 &7090168976412059076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6949532141508312644}
+  - component: {fileID: 5896997267794886462}
+  - component: {fileID: 1249167143575278486}
+  m_Layer: 12
+  m_Name: Hurtbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6949532141508312644
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7090168976412059076}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6398852952479827624}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5896997267794886462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7090168976412059076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6faaececc3c6dd24f87922edf219edef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charManager: {fileID: 6398852952479827625}
+--- !u!61 &1249167143575278486
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7090168976412059076}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.025}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.4, y: 0.55}
+  m_EdgeRadius: 0
 --- !u!1 &8952754046450057013
 GameObject:
   m_ObjectHideFlags: 0
